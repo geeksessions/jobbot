@@ -4,6 +4,7 @@
   "description": "a simple chat bot to manage a job board",
   "main": "index.js",
   "scripts": {
+	 "start": "echo 'starting..'; node-red",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/geeksessions/jobbot/issues"
   },
-  "homepage": "https://github.com/geeksessions/jobbot#readme"
+  "homepage": "https://github.com/geeksessions/jobbot#readme",
+  "dependencies": {
+    "node-red": "^0.18.4"
+  }
 }
