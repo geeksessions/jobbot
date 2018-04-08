@@ -70,15 +70,19 @@ var debug = require('debug')('botkit:main');
 var bot_options = {
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
-    // debug: true,
+    debug: true,
     scopes: ['bot']
 };
 
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
 // Mongo is automatically configured when deploying to Heroku
-if (process.env.MONGO_URI) {
-    var mongoStorage = require('botkit-storage-mongo')({mongoUri: process.env.MONGO_URI});
-    bot_options.storage = mongoStorage;
+// if (process.env.MONGO_URI) {
+//     var mongoStorage = require('botkit-storage-mongo')({mongoUri: process.env.MONGO_URI});
+//     bot_options.storage = mongoStorage;
+
+if (process.env.COUCHDB_URI) {
+    var couchdbStorage = require('botkit-storage-couchdb')(process.env.COUCHDB_URI);
+    bot_options.storage = couchdbStorage;
 } else {
     bot_options.json_file_store = __dirname + '/.data/db/'; // store user data in a simple JSON format
 }
