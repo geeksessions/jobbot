@@ -19,7 +19,9 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "fastify": "^1.6.0",
+    "pouchdb": "^6.4.3",
     "request": "^2.87.0",
-    "slack": "^11.0.0"
+    "slack": "^11.0.0",
+    "ws": "^5.2.0"
   }
 }
