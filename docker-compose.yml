@@ -1,0 +1,26 @@
+version: '3'
+services:
+  bot:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    
+    depends_on:
+      - db
+    environment:
+    - COUCHDB_USER=moo
+    - COUCHDB_PASSWORD=moo
+    - COUCHDB_HOST=db
+    - COUCHDB_PORT=5984
+  db:
+    image: couchdb:2
+    environment:
+      - COUCHDB_USER=moo
+      - COUCHDB_PASSWORD=moo
+    ports:
+      - "5984:5984"
+    volumes:
+      - "./db_data:/opt/couchdb/data"
+      - /opt/couchdb/etc
+      - "./config/cors.ini:/opt/couchdb/etc/local.d/cors.ini"
