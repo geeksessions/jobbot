@@ -1,6 +1,3 @@
-.db
-.env
 node_modules
-components/routes/_*
-.sass-cache/*
-.data
+.env
+.vscode
