@@ -2,6 +2,12 @@ require('dotenv').config()
 const clientID = process.env.clientID
 const clientSecret = process.env.clientSecret
 const token = process.env.token
+const COUCHDB_USER = process.env.COUCHDB_USER
+const COUCHDB_PASSWORD = process.env.COUCHDB_PASSWORD
+const COUCHDB_HOST = process.env.COUCHDB_HOST
+const COUCHDB_PORT = process.env.COUCHDB_PORT
+
+const COUCHDB_CONNECTION_STRING = `http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@${COUCHDB_HOST}:${COUCHDB_PORT}/jobboard`
 const Slack = require('slack')
 const request = require('request')
 const fastify = require('fastify')()
@@ -23,7 +29,7 @@ const ws = require('ws')
 //   console.log(`server listening on ${fastify.server.address().port}`)
 // })
 
-const DB = new pouchdb("http://jobbot:jobz-for-tha-baes@localhost:5984/jobboard")
+const DB = new pouchdb(COUCHDB_CONNECTION_STRING)
 
 DB.allDocs().then((data)=>{
   console.log("mamammama",data)
